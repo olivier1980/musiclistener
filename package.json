@@ -1,6 +1,6 @@
 {
   "name": "musiclistener",
-  "version": "0.0.0",
+  "version": "1.0.1",
   "description": "Push and get currently playing song API",
   "main": "index.js",
   "scripts": {
