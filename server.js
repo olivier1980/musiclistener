@@ -32,7 +32,7 @@ module.exports = function () {
             });
         }
 
-        res.send(200);
+        res.sendStatus(200);
     });
 
     app.post('/pushSong', function (req, res, next) {
@@ -51,7 +51,7 @@ module.exports = function () {
         if (!err.statusCode) return next(err);
 
         if (err.message) {
-            res.status(err.statusCode).send(err.message);
+            res.status(err.statusCode).sendStatus(err.message);
         }
         else {
             res.sendStatus(err.statusCode);

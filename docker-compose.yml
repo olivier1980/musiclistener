@@ -1,0 +1,8 @@
+services:
+  musiclistener:
+    container_name: musiclistener
+    environment:
+        MUSIC_PORT: 8111
+    volumes:
+      - ./:/var/www/app
+    build: docker

@@ -1,6 +1,6 @@
 {
   "name": "musiclistener",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Push and get currently playing song API",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
   "author": "Olivier Droog",
   "license": "MIT",
   "dependencies": {
-    "body-parser": "~1.15.0",
-    "express": "~4.13.4"
+    "body-parser": "^1.20.2",
+    "express": "~4.19.2"
   }
 }
