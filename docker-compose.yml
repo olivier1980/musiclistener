@@ -1,8 +1,10 @@
 services:
   musiclistener:
+    working_dir: /var/www/app
     container_name: musiclistener
     environment:
         MUSIC_PORT: 8111
     volumes:
       - ./:/var/www/app
-    build: docker
+    image: node:slim
+    command: "tail -f /dev/null"
