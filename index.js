@@ -1,5 +1,5 @@
 var env = process.env;
-var server = require('./server')();
+var server = require('./server')(env.API_KEY);
 
 var listener = server.listen(env.MUSIC_PORT, function(err) {
     if (err) throw err;

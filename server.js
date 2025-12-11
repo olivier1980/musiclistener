@@ -3,9 +3,8 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 
-var artist, album, track, end;
-
-module.exports = function () {
+module.exports = function (API_KEY) {
+    var artist, album, track, end;
     var app = express();
 
     app.use(function (req, res, next) {
@@ -22,8 +21,16 @@ module.exports = function () {
     }));
 
     app.get('/getSong', function (req, res) {
+
+        const apikey = req.query.key ?? '';
+        if (apikey !== API_KEY) {
+            res.sendStatus(403);
+            return
+        }
+
         var now = Date.now() / 1000;
 
+        // Check if song runtime has expired
         if (now < end ) {
             return res.json({
                 artist: artist,
@@ -36,12 +43,20 @@ module.exports = function () {
     });
 
     app.post('/pushSong', function (req, res, next) {
+        const apikey = req.query.key ?? '';
+        if (apikey !== API_KEY) {
+            res.sendStatus(403);
+            return
+        }
+
         var data = req.body.data.split('____');
 
         artist = data[0];
         album = data[1];
         track = data[2];
         length = data[3]/1000;
+
+        // Set end timestamp when the song should be cleared
         end = (Date.now() / 1000) + length;
 
         next();

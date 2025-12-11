@@ -2,8 +2,11 @@ services:
   musiclistener:
     working_dir: /var/www/app
     container_name: musiclistener
+    ports:
+      - "8111:8111"
     environment:
         MUSIC_PORT: 8111
+        API_KEY: TESTKEY
     volumes:
       - ./:/var/www/app
     image: node:slim
